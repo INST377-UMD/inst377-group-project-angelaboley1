@@ -145,13 +145,11 @@
             <label for="categoryFilter">Category:</label>
             <select id="categoryFilter">
                 <option value="">All Categories</option>
-                <!-- Add category options dynamically using JavaScript -->
             </select>
 
             <label for="areaFilter">Area:</label>
             <select id="areaFilter">
                 <option value="">All Areas</option>
-                <!-- Add area options dynamically using JavaScript -->
             </select>
         </div>
 
@@ -161,8 +159,6 @@
         </div>
 
         <div id="recipeContainer" class="recCont"></div>
-
-        <!-- Recipe Card Template -->
         <template id="recipeCardTemplate">
             <div class="recipe-card">
                 <img src="" alt="Recipe Image">
@@ -175,7 +171,6 @@
     </main>
 
     <script>
-        // Fetch categories and areas from API
         fetch('https://www.themealdb.com/api/json/v1/1/list.php?c=list')
             .then(response => response.json())
             .then(data => {
@@ -205,14 +200,13 @@
                 .then(data => {
 
                     const recipeContainer = document.getElementById('recipeContainer');
-                    recipeContainer.innerHTML = ''; // Clear previous results
+                    recipeContainer.innerHTML = ''; 
 
                     const recipeTemp = document.getElementById('recipeCardTemplate');
 
                     data.meals.forEach(recipe => {
                         const cardCopy = document.importNode(recipeTemp.content, true);
 
-                        // Update the card with recipe details
                         cardCopy.querySelector('img').src = recipe.strMealThumb;
                         cardCopy.querySelector('h2').textContent = recipe.strMeal;
                         cardCopy.querySelector('p').textContent = recipe.strInstructions;
@@ -232,9 +226,7 @@
 
                 })
 
-
         })
-        // Event listener for the search button
         document.getElementById('searchButton').addEventListener('click', function () {
             const categoryFilter = document.getElementById('categoryFilter').value;
             const areaFilter = document.getElementById('areaFilter').value;
@@ -244,14 +236,13 @@
                 .then(response => response.json())
                 .then(data => {
                     const recipeContainer = document.getElementById('recipeContainer');
-                    recipeContainer.innerHTML = ''; // Clear previous results
+                    recipeContainer.innerHTML = ''; 
 
                     const recipeCardTemplate = document.getElementById('recipeCardTemplate');
 
                     data.meals.forEach(recipe => {
                         const cardClone = document.importNode(recipeCardTemplate.content, true);
 
-                        // Update the cloned card with recipe details
                         cardClone.querySelector('img').src = recipe.strMealThumb;
                         cardClone.querySelector('h2').textContent = recipe.strMeal;
                         cardClone.querySelector('p').textContent = recipe.strInstructions;
@@ -263,5 +254,4 @@
         });
     </script>
 </body>
-
 </html>
