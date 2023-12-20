@@ -33,6 +33,6 @@ cosmetic design.
 
 ## Server Application
 
-Fetch - used throughout to allow for JS libraries and other APIs to work
-GET - used to gather the review that is inputed
-POST - adds the review to the reviews table
+* Fetch - used throughout to allow for JS libraries and other APIs to work
+* GET - used to gather the review that is inputed
+* POST - adds the review to the reviews table
