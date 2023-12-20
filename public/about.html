@@ -28,18 +28,30 @@
             margin-bottom: 10px;
         }
         table, th, td  {
-                border: 1px solid black;
-                padding: 5px;
-                margin-top: 10px;
-                background-color: white;
-            }
-            #errorBox {
-                background-color: rgb(209, 81, 81);
-                color: white;
-                border: 3px solid black;
-                margin: 10px;
-                padding: 5px;
-            }
+            border: 1px solid black;
+            padding: 5px;
+            margin-top: 10px;
+            background-color: white;
+        }
+        #errorBox {
+            background-color: rgb(209, 81, 81);
+            color: white;
+            border: 3px solid black;
+            margin: 10px;
+            padding: 5px;
+        }
+        .aboutDescription {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            text-align: justify;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
     </style>
 </head>
 <body>
@@ -57,19 +69,20 @@
         <p class="quoteArea"></p>
     </div> 
     <div class="recipeOfDay">
-        <div class="slider-container" id="slider">
-            <!-- Images will be dynamically added here -->
-        </div>
+        <div class="slider-container" id="slider"></div>
     </div>
-    <p>
-        In INST377, our final project is to create a dynamic website. We chose to create
-        a recipe website as we love cooking. On our Home page, you will see a random recipe
-        of the day. On our Recipe Search page, you can search for a recipe by a filter or
-        by name. On our About page, a random food quote of the day will pop up. At the
-        bottom, there is an area to enter a review. This is our backend part of the project.
-        It is linked to Supabase to instantly update the visual table on the page to see
-        real-life reviews. Enjoy :)
-    </p>
+    <div class = "aboutDescription">
+        <p>
+            In INST377, our final project is to create a dynamic website. We chose to create
+            a recipe website as we love cooking. On our Home page, you will see a random recipe
+            of the day. On our Recipe Search page, you can search for a recipe by a filter or
+            by name. On our About page, a random food quote of the day will pop up. At the
+            bottom, there is an area to enter a review. This is our backend part of the project.
+            It is linked to Supabase to instantly update the visual table on the page to see
+            real-life reviews. Enjoy :)
+        </p>
+    </div>
+    
     <h1>Leave a Review!</h1>
         <form onsubmit="addCustomer(); return false;">
             <label for="firstName">First Name:</label>
@@ -104,17 +117,15 @@
             }
         }
 
-        // Initialize Slick Slider after the document is ready
         $(document).ready(function () {
             $('#slider').slick({
                 slidesToShow: 1,
                 slidesToScroll: 1,
                 autoplay: true,
-                autoplaySpeed: 7000, // Change every 7 seconds
-                arrows: false, // Hide arrows
+                autoplaySpeed: 7000, 
+                arrows: false, 
             });
 
-            // Load 10 random recipe images
             loadRecipeImages(10);
              var category = 'food'
                 $.ajax({
